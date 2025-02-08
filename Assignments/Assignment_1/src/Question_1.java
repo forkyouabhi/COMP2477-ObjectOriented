@@ -1,46 +1,51 @@
 import java.util.Scanner;
 
-public class Question_1 {
+public class Q1 {
+    
+    public static String getDayOfWeek(int day) {
+        String[] days = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        int startDay = 3; // January 1, 2025 is Wednesday
+        return days[(startDay + (day - 1)) % 7];
+    }
 
+    
+    public static int getDay(int month, int dayOfMonth) {
+        int[] monthLength = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // 2025 is not a leap year
+        int dayOfYear = 0;
 
-    public static double calculateCharges(double hours) {
-        double charge = 2.00;
-        if (hours > 3) {
-            charge += Math.ceil(hours - 3) * 0.50;
+        for (int i = 0; i < month - 1; i++) {
+            dayOfYear += monthLength[i];
         }
-        return Math.min(charge, 10.00);
+        return dayOfYear + dayOfMonth;
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        double totalReceipts = 0.0;
-        char anotherCustomer = 'y';
+        Scanner sc = new Scanner(System.in);
+        int day, month, dayOfMonth;
 
-        System.out.println("Welcome to the Parking Garage!");
+        // Validate and get birthday input
+        do {
+            System.out.print("Enter your birthday (between 1-365): ");
+            day = sc.nextInt();
+        } while (day < 1 || day > 365);
 
-        while (anotherCustomer == 'y') {
-            System.out.print("Enter the number of hours parked for the customer: ");
-            double hours = scanner.nextDouble();
+        System.out.println("Your birthday falls on a " + getDayOfWeek(day) + " in 2025.\n");
 
+        // Validate and get month input
+        do {
+            System.out.print("Enter the month number (1-12): ");
+            month = sc.nextInt();
+        } while (month < 1 || month > 12);
 
-            if (hours < 0 || hours > 24) {
-                System.out.println("Invalid number of hours. Please enter a value between 0 and 24.");
-                continue;
-            }
+        // Validate and get day-of-month input
+        int[] monthLength = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        do {
+            System.out.print("Enter the day of the month (1-" + monthLength[month - 1] + "): ");
+            dayOfMonth = sc.nextInt();
+        } while (dayOfMonth < 1 || dayOfMonth > monthLength[month - 1]);
 
-
-            double charge = calculateCharges(hours);
-            System.out.printf("Charge for this customer: $%.2f%n", charge);
-
-
-            totalReceipts += charge;
-
-            System.out.print("Is there another customer? (y/n): ");
-            anotherCustomer = scanner.next().toLowerCase().charAt(0);
-        }
-
-
-        System.out.printf("Total receipts for the day: $%.2f%n", totalReceipts);
-        scanner.close();
+        System.out.printf("Day of the year: %d%n", getDay(month, dayOfMonth));
+        
+        sc.close(); 
     }
 }

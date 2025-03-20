@@ -1,4 +1,20 @@
+/*
+Author: Abhijeet Singh
+Student ID: 1207508
+Assignment: 4
+Question: 2
 
+Description:
+This program extends the grading system with an `Analyzable` interface for grade analysis.
+The `CourseGradesAnalyzable` class calculates the highest, lowest, and average grades.
+It prompts the user for input and displays the analysis results.
+
+How to run the program:
+1. Compile using `javac MainQ2.java`.
+2. Run using `java MainQ2`.
+3. Follow the prompts to input scores for different assessments.
+4. The program will display the grades, average, highest, and lowest scores.
+*/
 import java.util.Scanner;
 
 interface Analyzable {

@@ -1,3 +1,20 @@
+/*
+Author: Abhijeet Singh
+Student ID: 1207508
+Assignment: 4
+Question: 1
+
+Description:
+This program defines a grading system using various classes such as LetterGrade, Essay, PassFailExam, and FinalExam.
+It calculates letter grades based on scores and allows user input to create course assessments.
+The CourseGrades class stores and displays the grades.
+
+How to run the program:
+1. Compile using `javac MainQ1.java`.
+2. Run using `java MainQ1`.
+3. Follow the prompts to input scores for different assessments.
+4. The program will display the grades and corresponding scores.
+*/
 import java.util.Scanner;
 class LetterGrade {
     protected double score;
